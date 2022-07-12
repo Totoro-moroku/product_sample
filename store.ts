@@ -1,24 +1,35 @@
 import create from 'zustand'
-import { EditedTask, EditedNotice } from './types/types'
+import { EditedTask, EditedComment } from './types/types'
 
 type State = {
   editedTask: EditedTask
-  editedNotice: EditedNotice
+  editedComment: EditedComment
   updateEditedTask: (payload: EditedTask) => void
-  updateEditedNotice: (payload: EditedNotice) => void
+  updateEditedComment: (payload: EditedComment) => void
   resetEditedTask: () => void
-  resetEditedNotice: () => void
+  resetEditedComment: () => void
 }
 
-const useStore = create<State>((set) => ({
-  editedTask: { id: '', title: '' },
-  editedNotice: { id: '', content: '' },
+const useStore = create<State>((set, _) => ({
+  editedTask: { id: '', title: '', content: '' },
+  editedComment: { id: '', content: '' },
   updateEditedTask: (payload) =>
-    set({ editedTask: { id: payload.id, title: payload.title } }),
-  resetEditedTask: () => set({ editedTask: { id: '', title: '' } }),
-  updateEditedNotice: (payload) =>
-    set({ editedNotice: { id: payload.id, content: payload.content } }),
-  resetEditedNotice: () => set({ editedNotice: { id: '', content: '' } }),
+    set({
+      editedTask: {
+        id: payload.id,
+        title: payload.title,
+        content: payload.content,
+      },
+    }),
+  resetEditedTask: () =>
+    set({ editedTask: { id: '', title: '', content: '' } }),
+  updateEditedComment: (payload) =>
+    set({
+      editedComment: {
+        id: payload.id,
+        content: payload.content,
+      },
+    }),
+  resetEditedComment: () => set({ editedComment: { id: '', content: '' } }),
 }))
-
 export default useStore

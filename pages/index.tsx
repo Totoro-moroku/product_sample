@@ -1,11 +1,11 @@
-import { useState, FormEvent } from 'react';
-import { BadgeCheckIcon, ShieldCheckIcon } from '@heroicons/react/solid';
-import type { NextPage } from 'next';
-import { useMutateAuth } from '../hooks/useMutateAuth';
-import { Layout } from '../components/Layout';
+import { useState, FormEvent } from 'react'
+import { BadgeCheckIcon, ShieldCheckIcon } from '@heroicons/react/solid'
+import type { NextPage } from 'next'
+import { useMutateAuth } from '../hooks/useMutateAuth'
+import { Layout } from '../components/Layout'
 
 const Auth: NextPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true)
   const {
     email,
     setEmail,
@@ -13,16 +13,16 @@ const Auth: NextPage = () => {
     setPassword,
     loginMutation,
     registerMutation,
-  } = useMutateAuth();
+  } = useMutateAuth()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     if (isLogin) {
-      loginMutation.mutate();
+      loginMutation.mutate()
     } else {
-      registerMutation.mutate();
+      registerMutation.mutate()
     }
-  };
+  }
   return (
     <Layout title="Auth">
       <ShieldCheckIcon className="mb-6 h-12 w-12 text-blue-500" />
@@ -35,7 +35,7 @@ const Auth: NextPage = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => {
-              setEmail(e.target.value);
+              setEmail(e.target.value)
             }}
           />
         </div>
@@ -47,7 +47,7 @@ const Auth: NextPage = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setPassword(e.target.value)
             }}
           />
         </div>
@@ -66,11 +66,11 @@ const Auth: NextPage = () => {
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
             <BadgeCheckIcon className="h-5 w-5" />
           </span>
-          {isLogin ? 'Login' : 'Register'}
+          {isLogin ? 'Sign In' : 'Sign Up'}
         </button>
       </form>
     </Layout>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth
