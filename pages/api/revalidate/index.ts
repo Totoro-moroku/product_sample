@@ -10,7 +10,7 @@ type Msg = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data | Msg>
 ) {
   console.log('Revalidating tasks page.....')
 
