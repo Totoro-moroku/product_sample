@@ -1,13 +1,13 @@
-import { FC, ReactNode } from 'react';
-import Head from 'next/head';
-import { BadgeCheckIcon } from '@heroicons/react/solid';
+import { FC, ReactNode } from 'react'
+import Head from 'next/head'
+import { BadgeCheckIcon } from '@heroicons/react/solid'
 
 type Title = {
-  title: string;
-  children: ReactNode;
-};
+  title: string
+  children: ReactNode
+}
 
-export const Layout: FC<Title> = ({ children, title = 'Todo app' }) => {
+export const Layout: FC<Title> = ({ children, title = 'Product 1' }) => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center font-mono text-gray-800">
       <Head>
@@ -21,5 +21,5 @@ export const Layout: FC<Title> = ({ children, title = 'Todo app' }) => {
         <BadgeCheckIcon className="h-6 w-6 text-blue-500" />
       </footer>
     </div>
-  );
-};
+  )
+}

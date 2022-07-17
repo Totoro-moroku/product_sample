@@ -56,7 +56,7 @@ const Auth: NextPage = () => {
             onClick={() => setIsLogin(!isLogin)}
             className="cursor-pointer font-medium hover:text-indigo-500"
           >
-            change mode ?
+            change mode to {isLogin ? 'sign up' : 'sign in'} ?
           </span>
         </div>
         <button
