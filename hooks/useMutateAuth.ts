@@ -22,6 +22,21 @@ export const useMutateAuth = () => {
     }
   );
 
+  const loginWithGoogleMutation = useMutation(
+    async () => {
+      const { user, session, error } = await supabase.auth.signIn({
+        provider: 'google',
+      })
+      if (error) throw new Error(error.message);
+    },
+    {
+      onError: (err: any) => {
+        alert(err.message);
+        reset();
+      },
+    }
+  );
+
   const registerMutation = useMutation(
     async () => {
       const { error } = await supabase.auth.signUp({ email, password });
@@ -40,6 +55,7 @@ export const useMutateAuth = () => {
     setEmail,
     password,
     setPassword,
+    loginWithGoogleMutation,
     loginMutation,
     registerMutation,
   };
