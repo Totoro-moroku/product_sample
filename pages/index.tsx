@@ -12,13 +12,27 @@ const Auth: NextPage = () => {
     password,
     setPassword,
     loginMutation,
+    loginWithGoogleMutation,
     registerMutation,
   } = useMutateAuth()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    console.log(e)
+
     e.preventDefault()
     if (isLogin) {
       loginMutation.mutate()
+    } else {
+      registerMutation.mutate()
+    }
+  }
+
+  const handleWithGoogleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    console.log(e)
+
+    e.preventDefault()
+    if (isLogin) {
+      loginWithGoogleMutation.mutate()
     } else {
       registerMutation.mutate()
     }
@@ -68,6 +82,19 @@ const Auth: NextPage = () => {
           </span>
           {isLogin ? 'Sign In' : 'Sign Up'}
         </button>
+      </form>
+      <form onSubmit={handleWithGoogleSubmit}>
+        <div>
+          <button
+            type="submit"
+            className="group relative flex w-full justify-center rounded-md bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700"
+          >
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <BadgeCheckIcon className="h-5 w-5" />
+            </span>
+            Google
+          </button>
+        </div>
       </form>
     </Layout>
   )
